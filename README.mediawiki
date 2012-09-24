@@ -1,0 +1,2 @@
+=assess=
+A collection of scripts written to support computer use in the classroom for my Humanities classes from 2005-2011 at Parkway Academy of Technology and Health, a BostonPublic Schools High School. 
