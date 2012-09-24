@@ -12,7 +12,7 @@ $course=$_POST[course];
 $schyr=$_POST[schyr];
 $update=$_POST[update];
 $user="tim";
-$pword="nji9ol";
+$pword="xxxx";
 
 $sourcepage = "User:".$course."/".$wikipage;//User:hum2/economics
 //http://tim:nj@sitebuilt.net/wuff/index.php?title=Economics&action=raw&ctype=text/javascript

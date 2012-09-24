@@ -1,2 +1,5 @@
-=assess=
-A collection of scripts written to support computer use in the classroom for my Humanities classes from 2005-2011 at Parkway Academy of Technology and Health, a BostonPublic Schools High School. 
+=Assess=
+A collection of scripts written to support computer use in the classroom for my Humanities classes from 2005-2011 at Parkway Academy of Technology and Health (PATH), a BostonPublic Schools High School. Each student at PATH had a laptop. 
+
+The main computer platform for my courses was Mediawiki. Some scripts allow me to interact with medaiwiki through its API, doing things like injecting pages into students' acount pages. Check the [https://github.com/mckennatim/assess/tree/master/WikiBot WikiBot directory]
+
