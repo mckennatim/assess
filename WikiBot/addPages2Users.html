@@ -1,0 +1,33 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>addpages2Users</title>
+</head>
+<body>
+<p>converts a mediawiki page like http://pathboston.com/hum310/index.php?title=Economics&action=raw&ctype=text/javascript test url is localhost:8888/hosted/hum211 actual is DONT USE BLOCKQUOTE.</p>
+<form id="form1" name="Update" method="post" action="addPages2Users.php">
+	<INPUT TYPE=RADIO NAME="course" VALUE="hum2">hum2 <br />
+	<INPUT TYPE=RADIO NAME="course" VALUE="hum3">hum3<BR>
+  <label>
+  source url(w/o http://.../): <input type="text" name="sourceurl" id="textfield" value="pathboston.com/hum310" size="25"/>
+  </label><br/>
+  <label>
+  destination url(w/o http://..w/o/hum3): <input type="text" name="desturl" id="textfield" value="localhost:8888/hosted" size="25"/>
+  </label><br/>
+  <label>
+  description: <input type="text" name="descr" id="textfield" value="quiz on:" size="15"/>
+  </label>
+  <label>
+  wikipage: <input type="text" name="wikipage" id="textfield" value="Economics" size="15"/>
+  </label><br/>
+  <label>
+  school year ending 20__: <input type="text" name="schyr" id="textfield" value="11" size="15"/>
+  </label><br />
+	<INPUT TYPE=RADIO NAME="update" VALUE="0">just update page no new link <br />
+	<INPUT TYPE=RADIO NAME="update" VALUE="2">just create page no new link<BR>
+	<INPUT TYPE=RADIO NAME="update" VALUE="1" CHECKED >new link and page<BR>
+
+<input name="" type="submit" value="send" />
+</form>
+</body>
+</html>

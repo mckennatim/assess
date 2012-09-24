@@ -1,0 +1,136 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>wiki2db</title>
+	<link type="text/css" href="../js/jquery-ui-1.8.4.custom.css" rel="stylesheet" />	
+	<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-ui-1.8.4.custom.min.js"></script>
+	<script type="text/javascript">
+	$(function() {
+		function split(val) {
+			return val.split(/,\s*/);
+		}
+		function extractLast(term) {
+			return split(term).pop();
+		}
+		
+		$("#quesfrom").autocomplete({
+			source: function(request, response) {
+				$.getJSON("../tm/smcompl.php", {
+					term: extractLast(request.term),
+					course: document.getElementById("numques").value + 'duck'
+				}, response);
+			//$.getJSON("../tm/smcompl.php", {term: extractLast(request.term)}, response);
+			},
+			search: function() {
+				// custom minLength
+				var term = extractLast(this.value);
+				if (term.length < 2) {
+					return false;
+				}
+			},
+			focus: function() {
+				// prevent value inserted on focus
+				return false;
+			},
+			select: function(event, ui) {
+				var terms = split( this.value );
+				// remove the current input
+				terms.pop();
+				// add the selected item
+				terms.push( ui.item.value );
+				// add placeholder to get the comma-and-space at the end
+				terms.push("");
+				this.value = terms.join(", ");
+				return false;
+			}
+		});
+		$("#choicefrom").autocomplete({
+			source: function(request, response) {
+				$.getJSON("../tm/scompl.php", {
+					term: extractLast(request.term)
+				}, response);
+			},
+			search: function() {
+				// custom minLength
+				var term = extractLast(this.value);
+				if (term.length < 2) {
+					return false;
+				}
+			},
+			focus: function() {
+				// prevent value inserted on focus
+				return false;
+			},
+			select: function(event, ui) {
+				var terms = split( this.value );
+				// remove the current input
+				terms.pop();
+				// add the selected item
+				terms.push( ui.item.value );
+				// add placeholder to get the comma-and-space at the end
+				terms.push("");
+				this.value = terms.join(", ");
+				return false;
+			}
+		});
+		$("#compques").autocomplete({
+			source: function(request, response) {
+				$.getJSON("../tm/comp.php", {
+					term: extractLast(request.term)
+				}, response);
+			},
+			search: function() {
+				// custom minLength
+				var term = extractLast(this.value);
+				if (term.length < 2) {
+					return false;
+				}
+			},
+			focus: function() {
+				// prevent value inserted on focus
+				return false;
+			},
+			select: function(event, ui) {
+				var terms = split( this.value );
+				// remove the current input
+				terms.pop();
+				// add the selected item
+				terms.push( ui.item.value );
+				// add placeholder to get the comma-and-space at the end
+				terms.push("");
+				this.value = terms.join(", ");
+				return false;
+			}
+		});
+	});
+	</script>
+</head>
+<body>
+<form id="form1" name="Update" method="get" action="createCquiz.php">
+  <br />
+  <label>
+  comprehension questions from: <input type="text" name="compques" id="compques" size="60"/>
+  </label>
+  <br />
+  <br />
+  <label>
+  vocab source articles questions from: <input type="text" name="quesfrom" id="quesfrom" size="60"/>
+  </label>
+  <br />
+  <label>
+  vocab source articles choices from  : <input type="text" name="choicefrom" id="choicefrom" size="60"/>
+  </label>
+  <br />
+  <label>
+  total questions: <input type="text" name="numques" id="numques" size="2"/>
+  </label>
+  <label>
+  comprehension questions (%): <input type="text" name="percentcomp" id="numques" size="2"/>
+  </label>
+	<INPUT TYPE=RADIO NAME="quiztype" VALUE="egg">egg
+	<INPUT TYPE=RADIO NAME="quiztype" VALUE="html">html<BR>
+<input name="" type="submit" value="send" />
+</form>
+</body>
+</html>

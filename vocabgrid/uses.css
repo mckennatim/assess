@@ -1,0 +1,56 @@
+body
+{
+	background-color: #CDC9C9;
+}
+td 
+{ 
+	padding: 5px 10px; 
+	vertical-align: top;
+	border: black 1px solid
+}
+td.aid
+{
+	width: 12px;
+}
+
+td.word
+{
+	font-size: 14pt;
+	background-color: darkorange;
+}
+tr.trdef
+{
+	background-color: #FFEC8B;
+}
+tr.trcon
+{
+	background-color: #D1EEEE;
+}
+tr.tryou
+{
+	background-color: thistle;
+}
+body
+{
+  font-family: Verdana, Arial;
+  font-size: 10pt
+}
+
+
+table.nav
+{
+  border: black 1px solid;
+  text-align: left;
+  background-color: darkseagreen;
+  color: white;
+}
+td.left
+{
+	width: 100px;
+	color: white;
+}
+td.right
+{
+	width: 100px;
+	color: white;
+}

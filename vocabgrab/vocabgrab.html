@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>vocabGrab</title>
+		<link type="text/css" href="../js/jquery-ui-1.8.4.custom.css" rel="stylesheet" />	
+		<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="../js/jquery-ui-1.8.4.custom.min.js"></script>
+		<script type="text/javascript">
+		$(function() {	
+			$('#unit').val(""); 
+			$('#course').val(""); 
+			$('#topic').val(""); 
+			$('#location').val(""); 
+			$("#asource").autocomplete({
+				source: "../tm/scompl.php", 
+				minLength: 2,
+				select: function(event, ui) {
+					$('#unit').val(ui.item.unit); 
+					$('#course').val(ui.item.course); 
+					$('#topic').val(ui.item.topic); 
+				}
+			});
+			$("#topic").autocomplete({
+				source: "../tm/tcompl.php", 
+				minLength: 2,
+				select: function(event, ui) {
+					$('#unit').val(ui.item.unit); 
+					$('#course').val(ui.item.course); 
+				}
+			});
+			$("#unit").autocomplete({
+				source: "../tm/ucompl.php", 
+				minLength: 2,
+				select: function(event, ui) {
+					$('#course').val(ui.item.course); 
+				}
+			});
+			$("#course").autocomplete({
+				source: "../tm/ccompl.php", 
+				minLength: 2,
+			});				
+		});
+		</script>
+	</head>
+<body>
+	<form id="form1" name="aform" method="post" action="vocgrab2db.php">
+  <label>
+  VisualTesuarus wordlist: <input type="text" name="url" id="textfield" size="50" /><input name="just" type="submit" value="new list for existing source" />
+  </label>
+  <br />
+  <label>
+  source article: <input type="text" name="asource" id="asource"/><input name="just" type="submit" value="new-source" /> +list
+  </label>
+  <br />
+  <label>
+  location: <input type="text" name="loc" id="textfield" value=1 size="7"/>
+  </label>
+  <label>
+  sub-location: <input type="text" name="subloc" id="textfield" value=1 size="7"/>
+  </label> 
+  <br />
+  <label>
+  topic: <input type="text" name="topic" id="topic" /><input name="just" type="submit" value="new-topic" /> +source+list
+  </label>
+  <br />
+  <label>
+  unit: <input type="text" name="unit" id="unit" /><input name="just" type="submit" value="new-unit" /> +topic+source+list
+  </label>
+  <br />  
+  <label>
+  course: <input type="text" name="course" id="course" /><input name="just" type="submit" value="new-course" />+unit+topic+source+list
+  </label>
+  <br />
+</form>
+</body>
+</html>

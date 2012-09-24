@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>vocabGrid using autocomplete</title>
+    <script type="text/javascript" src="uses.js"></script>
+	<script type="text/javascript" src="junk/misc.js"></script>
+    <link href="uses.css" type="text/css" rel="stylesheet"/> 	
+	<link type="text/css" href="../js/jquery-ui-1.8.4.custom.css" rel="stylesheet" />	
+	<script type="text/javascript" src="../js/jsxml.js"></script>
+	<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-ui-1.8.4.custom.min.js"></script>
+	<script type="text/javascript">
+	$(function() {	 
+		$("#aword").autocomplete({
+			source: "../tm/wcompl.php", 
+			minLength: 2,
+			select: function(event, ui) {
+				$('#aword').val(ui.item.sourceID); 
+			}
+		});					
+	});
+	$(function() {	
+		$('#loc').val(""); 
+		$('#subloc').val(""); 
+		$("#sourceloc").autocomplete({
+			source: "../tm/lcompl.php", 
+			minLength: 2,
+			select: function(event, ui) {
+				$('#sourceID').val(ui.item.sourceID); 
+				$('#loc').val(ui.item.loc); 
+				$('#subloc').val(ui.item.subloc); 
+			}
+		});					
+	});
+	function goSource(){
+		var sourceID = document.getElementById("sourceID").value;
+		var loc = document.getElementById("loc").value;
+		var subloc = document.getElementById("subloc").value;
+		changeSubSource(sourceID,loc,subloc);
+	}
+	function goWord(){
+		var aword = document.getElementById("aword").value;
+		changeWord(aword);
+	}
+	</script>
+
+  </head>	
+<body onload="init();">
+	<div id="list2Div">duck </div><a href="#" onclick="getList()">Get Source List</a>
+  <label>
+  source+loc+subloc: <input type="text" name="sourceloc" id="sourceloc"/>
+  <a href="#" onclick="goSource()">Get SubSource</a>
+  </label>
+  <label>
+  sourceID<input type="text" name="sourceID" id="sourceID" size="16"/>
+  </label>
+  <label>
+  loc<input type="text" name="loc" id="loc" value=1 size="3"/>
+  </label>
+  <label>
+  subloc<input type="text" name="subloc" id="subloc" value=1 size="3"/>
+  </label>
+  <label>
+  word: <input type="text" name="aword" id="aword"/>
+  <a href="#" onclick="goWord()">Get Word Entries</a>
+  </label>
+
+<br/>	
+<div id="gridDiv">frog</div>
+</body>
+</html>

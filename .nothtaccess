@@ -1,0 +1,7 @@
+ErrorDocument 401 /files/401.html 
+AuthName "Restricted Area" 
+AuthType Basic 
+AuthUserFile /home/sitebuil/.htpasswds/.htpasswd 
+AuthGroupFile /dev/null 
+
+require user tim 

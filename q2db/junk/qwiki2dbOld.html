@@ -1,0 +1,76 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<title>wiki2db</title>
+	<link type="text/css" href="../js/jquery-ui-1.8.4.custom.css" rel="stylesheet" />	
+	<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-ui-1.8.4.custom.min.js"></script>
+	<script type="text/javascript">
+	$(function() {
+		function split(val) {
+			return val.split(/,\s*/);
+		}
+		function extractLast(term) {
+			return split(term).pop();
+		}
+		
+		$("#sources").autocomplete({
+			source: function(request, response) {
+				$.getJSON("../tm/scompl.php", {
+					term: extractLast(request.term)
+				}, response);
+			},
+			search: function() {
+				// custom minLength
+				var term = extractLast(this.value);
+				if (term.length < 2) {
+					return false;
+				}
+			},
+			focus: function() {
+				// prevent value inserted on focus
+				return false;
+			},
+			select: function(event, ui) {
+				var terms = split( this.value );
+				// remove the current input
+				terms.pop();
+				// add the selected item
+				terms.push( ui.item.value );
+				// add placeholder to get the comma-and-space at the end
+				terms.push("");
+				this.value = terms.join(", ");
+				return false;
+			}
+		});
+	});
+	</script>
+</head>
+<body>
+<p>converts a mediawiki page like http://pathboston.com/hum310/index.php?title=Economics&action=raw&ctype=text/javascript into a relational mysql db Be sure to have answers as numbers, space delimited in second row</p>
+<form id="form1" name="Update" method="post" action="qwiki2db.php">
+  <label>
+  site url(w/o http://.../): <input type="text" name="siteurl" id="textfield" value="sitebuilt.net/wuff" size="25"/>
+  </label>
+  <label>
+  wikipage: <input type="text" name="wikipage" id="textfield" value="Economics" size="15"/>
+  </label>
+
+  <label>
+  test name: <input type="text" name="testname" id="textfield" size="15"/>
+  </label>
+  <br />
+  <label>
+  description: <input type="text" name="quizdesc" id="quizdesc" size="88"/>
+  </label>
+  <br />
+  <label>
+  source articles: <input type="text" name="sources" id="sources" size="60"/>
+  </label>
+  <label>
+  order: <input type="text" name="qorder" id="qorder" size="2" value="1"/>
+  </label>
+<input name="" type="submit" value="send" />
+</form>
+</body>
+</html>

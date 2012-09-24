@@ -1,0 +1,79 @@
+<html><head>
+
+  
+    <title>vocabGrid using autocomplete</title>
+    <script type="text/javascript" src="uses.js"></script>
+	<script type="text/javascript" src="junk/misc.js"></script>
+    <link href="uses.css" type="text/css" rel="stylesheet"> 	
+	<link type="text/css" href="../js/jquery-ui-1.8.4.custom.css" rel="stylesheet">	
+	<script type="text/javascript" src="../js/jsxml.js"></script>
+
+	<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-ui-1.8.4.custom.min.js"></script>
+	<script type="text/javascript">
+	$(function() {	 
+		$("#aword").autocomplete({
+			source: "../tm/wcompl.php", 
+			minLength: 2,
+			select: function(event, ui) {
+				$('#aword').val(ui.item.sourceID); 
+			}
+		});					
+	});
+	function goWord(){
+		var aword = document.getElementById("aword").value;
+		changeWord(aword);
+	}
+	</script>
+
+  </head><div firebugversion="1.5.4" style="display: none;" id="_firebugConsole"></div><body onload="init();">
+	<p>Select from drop-down to get all records for source</p>
+	<div id="list2Div"><select onchange="changeSource(this.value);" size="1" name="selSource"><option>select an article</option><option value="econ">econ</option><option value="marx">marx</option><option value="danielboorstin">danielboorstin</option><option value="crucible">crucible</option><option value="folklore">folklore</option><option value="macbeth">macbeth</option><option value="patrickHenry">patrickHenry</option><option value="NFLhistory">NFLhistory</option><option value="theNadir">theNadir</option><option value="whites-onlyTowns">whites-onlyTowns</option><option value="wilson">wilson</option><option value="branding">branding</option><option value="gogetter">gogetter</option><option value="oil">oil</option><option value="oil2">oil2</option><option value="robberbaron">robberbaron</option><option value="caesar">caesar</option></select></div><a href="#" onclick="getList()">Get Source List</a>
+
+	<p>Autocomplete field will subselect source for location</p>
+<!-- <form id="form1" name="aform" method="get"onsubmit="loadGridPage(3)">-->.
+  <br>
+  <label>
+  word: <input aria-haspopup="true" aria-autocomplete="list" role="textbox" autocomplete="off" class="ui-autocomplete-input" name="aword" id="aword" type="text">
+  <a href="#" onclick="goWord()">Get Word Entries</a>
+  </label>
+<!--></form>-->	
+<br>	
+
+<div id="gridDiv"><table xmlns="http://www.w3.org/1999/xhtml" class="nav"><tbody><tr><td class="left">6 Items
+					</td><td class="right"></td><td class="left"><a href="#" onclick="loadGridPage(2)">
+									Next page
+								</a></td><td class="right">
+						page 1
+						of 3</td></tr></tbody></table><table xmlns="http://www.w3.org/1999/xhtml" id="words"><tbody><tr><td class="word">apparel</td><td class="aid">544</td></tr><tr></tr></tbody></table><table id="defs"><tbody><tr id="dtr917"><td>Clothing, especially outer garments; attire. A covering or adornment.</td><td class="aid">917</td><td id="defbutton"><a href="#" onclick="editDef(917, true)">
+										Edit Def
+										<br></a><a href="#" onclick="deleteId(917, 1)">
+										Del Def
+									</a></td></tr><tr></tr></tbody></table><table id="ctbl"><tbody><tr id="ctr917"><td>What dost thou with thy best apparel on?</td><td>n.</td><td>caesar</td><td>917</td><td id="contextbutton"><a href="#" onclick="editContext(917, true)">
+
+													Edit Context
+												</a></td></tr></tbody></table><table id="ytbl"><tbody><tr id="ytr22"><td>jeje ejeke nehhe</td><td>trees with their apparel of foliagej jejnje 
+</td><td>answers.come</td><td>2</td><td>46</td><td id="yourbutton"><a href="#" onclick="editYour(22, true)">
+													Edit Your
+												</a></td></tr></tbody></table><a href="#" onclick="addYour()">
+										Add Your
+									</a><table xmlns="http://www.w3.org/1999/xhtml" id="words"><tbody><tr><td class="word">beseech</td><td class="aid">546</td></tr><tr></tr></tbody></table><table id="defs"><tbody><tr id="dtr919"><td>To address an earnest or urgent request to implore</td><td class="aid">919</td><td id="defbutton"><a href="#" onclick="editDef(919, true)">
+
+										Edit Def
+										<br></a><a href="#" onclick="deleteId(919, 1)">
+										Del Def
+									</a></td></tr><tr></tr></tbody></table><table id="ctbl"><tbody><tr id="ctr919"><td>Second Commoner Nay, I beseech you, sir, be not out with me: yet, if you be out, sir, I can mend you.</td><td>tr.v.</td><td>caesar</td><td>919</td><td id="contextbutton"><a href="#" onclick="editContext(919, true)">
+													Edit Context
+												</a></td></tr></tbody></table><table id="ytbl"><tbody><tr id="ytr24"><td></td><td>beseech them for help
+</td><td>answers.com</td><td>0</td><td></td><td id="yourbutton"><a href="#" onclick="editYour(24, true)">
+													Edit Your
+												</a></td></tr></tbody></table><a href="#" onclick="addYour()">
+
+										Add Your
+									</a><table xmlns="http://www.w3.org/1999/xhtml" class="nav"><tbody><tr><td class="left">6 Items
+					</td><td class="right"></td><td class="left"><a href="#" onclick="loadGridPage(2)">
+									Next page
+								</a></td><td class="right">
+						page 1
+						of 3</td></tr></tbody></table></div>
+<ul style="z-index: 1; top: 0px; left: 0px; display: none;" aria-activedescendant="ui-active-menuitem" role="listbox" class="ui-autocomplete ui-menu ui-widget ui-widget-content ui-corner-all"></ul></body></html>

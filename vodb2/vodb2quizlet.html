@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>vocab-quizlet</title>
+    <script type="text/javascript" src="grid.js"></script>
+    <link href="grid.css" type="text/css" rel="stylesheet"/> 	
+	<link type="text/css" href="../js/jquery-ui-1.8.4.custom.css" rel="stylesheet" />	
+	<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-ui-1.8.4.custom.min.js"></script>
+	<script type="text/javascript">
+	$(function() {	
+		$('#loc').val(""); 
+		$('#subloc').val(""); 
+		$("#sourceloc").autocomplete({
+			source: "../tm/lcompl.php", 
+			minLength: 2,
+			select: function(event, ui) {
+				$('#sourceID').val(ui.item.sourceID); 
+				$('#loc').val(ui.item.loc); 
+				$('#subloc').val(ui.item.subloc); 
+			}
+		});					
+	});
+	</script>
+
+  </head>	
+<body>
+<form id="form1" name="Update" method="post" action="vodb2quizlet.php">
+  <br />
+	Create quizlet limited to loc/subloc?:<br />
+	<input type="radio" name="limi" value="yes" /> yes
+	<br />
+	<input type="radio" name="limi" value="no" /> no	
+	<br />
+  <label>
+  source+loc+subloc: <input type="text" name="sourceloc" id="sourceloc"/>
+  </label>
+  <br />
+  <label>
+  sourceID<input type="text" name="sourceID" id="sourceID" size="16"/>
+  </label>
+  <label>
+  loc<input type="text" name="loc" id="loc" value=1 size="3"/>
+  </label>
+  <label>
+  subloc<input type="text" name="subloc" id="subloc" value=1 size="3"/>
+  </label>
+  <br />
+  <br />  
+<input name="" type="submit" value="send" />
+</form>
+</br>	
+<div id="gridDiv">frog</div>
+</body>
+</html>

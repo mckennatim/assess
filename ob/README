@@ -1,0 +1,18 @@
+Files to move occupyboston wiki from the http://occupyboston.wikispaces.com to http://wiki.occupyboston.org 
+
+movespace.pl - translates each page. 
+               Usage:<occupyboston>% perl ../movespace.pl Education >../obout/Education
+makeXML.pl - turns a directory of translated pages into MW import file
+             Usage:<obout>% pperl ../makeXML.pl >obXML/mw.xml
+
+TO Move Discussion pages:
+
+discussgrab2.php - looks through directory of wiki pages, identifies which have discussion section and assembles discussions into a discussion page on mediawiki, creating an xml import file.
+                usage:<ob>% php discussgrab2.php >obout/obXML/dis.xml
+
+obout <dir> contains page files that have been translated with movespace.pl
+occupyboston <dir> the export of wikispaces
+
+I don't have admin privileges on the new wiki so I tried it on http://pathboston.com/hum3p/User:Mcktimo/take1/statement_of_purpose
+If you hit the discussion tab you can see how the discussion pages of wikispaces is translated
+
