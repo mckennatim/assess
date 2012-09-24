@@ -1,17 +1,34 @@
 =Assess=
 A collection of scripts written to support computer use in the classroom for my Humanities classes from 2005-2011 at Parkway Academy of Technology and Health (PATH), a BostonPublic Schools High School. Each student at PATH had a laptop. 
 <br/>
+
 The main computer platform for my courses was Mediawiki. Each student had an account on the wiki and used their account pages as scratchpad, a workbook, as a place for in-class writing, for quizzes and exams and for all the stages of essays and research papers. 
 
-<br/>
-Some scripts allow me to interact with medaiwiki through its API, doing things like injecting pages into students' acount pages. Check the [https://github.com/mckennatim/assess/tree/master/WikiBot WikiBot directory]. Other scripts helped me to create general course content that would show up on the course wiki's. 
-<br/>
+====mediawik scripts====
+Some scripts allow me to interact with medaiwiki through its API, doing things like injecting pages into students' acount pages. Check the [https://github.com/mckennatim/assess/tree/master/WikiBot WikiBot ] and [https://github.com/mckennatim/assess/tree/master/mw mw] directories. Other scripts helped me to create general course content that would show up on the course wiki's. Most were in PHP and allowed for interaction with the MYSQL databases.
+
 There were course wikis for most of the courses I taught, with an new version every year. Other supporting technology included forums and blogs. Course Wiki's have been archived and some are still hosted in read-only format. Some links to course wikis:
 ;http://www.pathboston.com/hum4 : - a senior level Humanities course focusing on the literature and history of the world from 1500-present
 ;http://www.pathboston.com/hum3 : - a junior level Humanities class focusing on the literature and history of the United States from post-Reconstruction - present day
 ;http://www.pathboston.com/hum2 : -a sophomore Humanities class focusing on the literature and history of the United States from Antebellum America through Reconstruction
-;http://www.pathboston.com/poets : - a freshman level course in poetry, mythology and self expression
+;http://www.pathboston.com/poets : - a freshman level course in poetry, mythology and self expression with links to student blogs at http://pathpoets.blogspot.com/
 
-<br/>
+====data====
+There was a database with  of article links for material used in each course. These were indexed by course, by unit and standards. Additionally were two other databases, one for questions on the course materials with references into the text and with various multiple choice and short answer responses that connected to those questions. The other database was of vocabulary words from the source materials including the context in which it appeared, other contexts from within and outside the course (some student created), definitions, and parts of speech.  Finally there was the database of the quizzes and all student responses to every question which allowed for item analysis.
 
+====general work flow====
+In general, whenever a new article or excerpt was going to be used in a class, I would first process get it in the database and all indexed up.
+=====vocab processing=====
+Then I'd run scripts to extract vocabulary words and terminology. [http://www.visualthesaurus.com/vocabgrabber/ Visual Thesaurus vocabgrabber] (if you are a paying customer) allows you to send it a text file, book chapter, whatever and then it will identify vocabulary words based upon lots of criteria. It produces a list of words along with the sentence they showed up in. 
 
+[https://github.com/mckennatim/vocabgrab Vocabgrab] Takes the list produced from visual thesaurus stores it and scrapes the web for definitions and then adds them to the database. 
+
+[https://github.com/mckennatim/vocabgrid Vocabgrid] allows the teacher to quickly review those automatically collected definitions to make sure they are the appropriate definitions. It allowed for in-cell editing of webpage tables. This I wrote in AJAX , using an pretty early version. Alas it only works in an old version of a Firefox Browser from back then. (Now I do all my AJAX through Jquery).
+
+[https://github.com/mckennatim/vodb2 vodb2] contains a few utility programs to get words, definitions and contexts for an article out of the database and into an HTML quiz, a smartboard quiz, or a [http://quizlet.com/1370428/macbeth-flash-cards/ quizlet] or wordlist or a [http://www.pathboston.com/hum3/Glossary glossary].
+=====question processing=====
+All questions on the readings were collected stored and indexed. Some were in moodle format, and some were in mediawiki format. 
+
+[https://github.com/mckennatim/wiki2db wiki2db] and [https://github.com/mckennatim/q2db q2db] are examples of a parsers that extracts questions from mediawiki format and sends them to a database.
+
+[https://github.com/mckennatim/qdb2 qdb2] and [https://github.com/mckennatim/combine combine] are scripts to create quizzes from the database according to assorted criteria. The quizzes are then produced in various media including smartboard, smartphone, printed or browser. They are randomized on a question by question and within multiple choice responses so that each quiz looks different. Scores are reported immediately and sent to a database that allows for item analysis.
