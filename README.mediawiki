@@ -7,10 +7,10 @@ The main computer platform for my courses was Mediawiki. Each student had an acc
 Some scripts allow me to interact with medaiwiki through its API, doing things like injecting pages into students' acount pages. Check the [https://github.com/mckennatim/assess/tree/master/WikiBot WikiBot directory]. Other scripts helped me to create general course content that would show up on the course wiki's. 
 <br/>
 There were course wikis for most of the courses I taught, with an new version every year. Other supporting technology included forums and blogs. Course Wiki's have been archived and some are still hosted in read-only format. Some links to course wikis:
-;http://www.pathboston.com/hum4: - a senior level Humanities course focusing on the literature and history of the world from 1500-present
-;http://www.pathboston.com/hum3: - a junior level Humanities class focusing on the literature and history of the United States from post-Reconstruction - present day
-;http://www.pathboston.com/hum2: -a sophomore Humanities class focusing on the literature and history of the United States from Antebellum America through Reconstruction
-;http://www.pathboston.com/poets: - a freshman level course in poetry, mythology and self expression
+;http://www.pathboston.com/hum4 : - a senior level Humanities course focusing on the literature and history of the world from 1500-present
+;http://www.pathboston.com/hum3 : - a junior level Humanities class focusing on the literature and history of the United States from post-Reconstruction - present day
+;http://www.pathboston.com/hum2 : -a sophomore Humanities class focusing on the literature and history of the United States from Antebellum America through Reconstruction
+;http://www.pathboston.com/poets : - a freshman level course in poetry, mythology and self expression
 
 <br/>
 
